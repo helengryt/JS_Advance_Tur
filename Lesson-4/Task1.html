@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Homework Lesson-4</title>
+	
+</head>
+<body>
+	<form id="formToValidate">
+		<span>Enter your name</span> </br>
+		<input type="text" id="nameEnter" class="name" /> </br></br>
+		<span>Enter your e-mail</span> </br>
+		<input type="email" class="email" validEmail /> </br></br>
+		<span>Enter your password</span> </br>
+		<input type="password" class="pass" /></br></br>
+		<span>Enter the number of apples eaten</span> </br>
+		<input type="number" class="apples" minlength = 1/></br></br>
+		<span>Say thanks for apples</span> </br>
+		<input type="text" class="thanks" value=""/></br></br>
+    	<input type="checkbox" id="agreed" /> <label for = "agreed"> Click if you agree</label>
+    	</br></br>
+
+    	<input type="button" class="submit" value="Submit" /> &nbsp;
+    	<input type="button" class="validate" value="Validate" />
+
+
+    	<style>
+
+    	.name, .email, .pass, .apples, .thanks, .agreed {
+    	validation: required;
+    	}
+
+        input{
+          outline: none;
+        }
+       .valid{
+          border: 1px solid green;
+        }
+        .invalid{
+          border: 1px solid red;
+        }
+    </style>
+
+	</form>
+
+<script src="Task1.js"></script>
+
+</body>
+</html>
