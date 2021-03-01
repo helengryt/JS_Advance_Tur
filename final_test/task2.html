@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Forms Task 1</title>
+  <script>
+    /*
+      Задание:
+        Сделать валидацию формы:
+        1. Логин / Пароль не может быть пустым
+        2. то поле, которое не прошло валидацию подсвечивать красным, которое прошло - подсвечивать зеленым.
+        3. Пока не стоит что юзер согласен с лиц. соглашением - кнопка отправки не активна
+    */
+  </script>
+</head>
+<body>
+  <form id="MyValidateForm">
+    <input type="text" name='login' placeholder="Ваш логин" />
+    <input type="password" name='pas1' placeholder="Ваш пароль" />
+    <input type="password" name='pas2' placeholder="Повторите пароль" />
+    <label for="agree">
+      <span>Вы согласны с лицензионым соглашением.</span>
+      <input type="checkbox" id="agree" />
+    </label>
+    <input type="submit" id="submit" value="Отправить" disabled/>
+  </form>
+
+  <style>
+    #MyValidateForm{
+      width: 350px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #MyValidateForm input{
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      padding: 10px 20px;
+    }
+    .error{
+        border: 1px solid red;
+    }
+    .OK{
+        border: 1px solid green;
+    }
+  </style>
+
+  <script>
+    
+    var mainForm = document.getElementById('MyValidateForm');
+    var submitBtn = document.getElementById('submit');
+    var licenseAgreement = document.getElementById('agree');
+
+     var checkIfEmpty = function checkIfEmpty(el) {
+      return el.length === 0;
+    };
+
+    var checkSamePassword = function checkSamePassword(pass, confirmPass) {
+      return pass === confirmPass;
+    };
+
+      licenseAgreement.addEventListener('click', function(e) {
+      if (e.target.checked) {
+        submitBtn.removeAttribute('disabled');
+      } else {
+        submitBtn.setAttribute('disabled', '');
+      }
+    })
+
+      mainForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      var valid = true;
+
+      if (checkIfEmpty(mainForm.login.value)) {
+        valid = false;
+        mainForm.login.className = 'error';
+      } else {
+        mainForm.login.className = 'OK';
+      }
+
+      if (checkIfEmpty(mainForm.pas1.value)) {
+        valid = false;
+        mainForm.pas1.className = 'error';
+      } else {
+        mainForm.pas1.className = 'OK';
+      }
+
+      if (!checkSamePassword(mainForm.pas1.value, mainForm.pas2.value)){
+        valid = false;
+        mainForm.pas2.className = 'error';
+      } else {
+        mainForm.pas2.className = 'OK';
+      }     
+
+    });
+
+
+
+
+  </script>
+</body>
+</html>
