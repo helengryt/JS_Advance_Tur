@@ -45,43 +45,89 @@
             - yourForm.reportValidity: вызывает проверку всех правил и вывод сообщения с ошибкой, если такая есть
 
     */
-/*var inputName = document.getElementById('nameEnter');
-//var nameX = nameV.innerText;
 
-function checkname(e){
-    inputName.classList.add(inputName.value.length <= 2 ? 'invalid' : 'valid');
-}
 
-checkname();
-*/
+ let myForm = document.getElementById('formToValidate');   
+        let submitBtn = document.getElementById('submit');
+        let validateBtn = document.getElementById('validate');
 
-//var validate = document.querySelector('.submit');
+        var cleanValidationMessage = function() {
+            let arrOfInputs = Array.from(myForm.elements);
+            arrOfInputs.forEach( item => {
+                item.setCustomValidity('');
+            })
+        }
 
-//validate.addEventListener('click', checkname());
+        submitBtn.addEventListener('click', function(e) {
+            cleanValidationMessage();
 
-/*function checkname(e){
-    var inputName = document.querySelector('.name');
-    inputName.oninput = () => {
-        console.log(inputName.value.length);
-    
-    if (inputName.value.length <= 2){
-        inputName.classList.add('invalid');
-    } else {
-        inputName.classList.remove('invalid');
-        inputName.classList.add('valid');
-    }
-}
-}
+            if (myForm.name.value.length === 0){
+                myForm.name.setCustomValidity("Ну хоть покушай немного... Яблочки вкусные");
+            } 
 
-checkname();
-*/
+            if (!myForm.email.validity.valid) {
+                myForm.email.setCustomValidity('Ну и зря, не получишь бандероль с яблоками!');
+            }
+
+            if (!myForm.pass.validity.valid) {
+                myForm.pass.setCustomValidity('Я никому не скажу наш секрет');
+            }
+
+            if (!myForm.apples.validity.valid) {
+                myForm.apples.setCustomValidity('Ну хоть покушай немного... Яблочки вкусные');
+            }   
+
+            if (myForm.sayThanks.value !== 'спасибо'){
+                myForm.sayThanks.setCustomValidity("Фу, неблагодарный(-ая)!");
+            }
+
+            if (!myForm.agreed.validity.valid) {
+                myForm.agreed.setCustomValidity('Необразованные живут дольше! Хорошо подумай!');
+            }
+        })
+
+        validateBtn.addEventListener('click', function(){
+            if(!myForm.checkValidity()){
+                alert('please provide correct info');
+            } else {
+                alert('Good job, the form is good to be submitted');
+            } 
+
+            myForm.reportValidity();  
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
 var inputName = document.querySelector('.name');
 var inputEmail = document.querySelector('.email');
 var inputPass = document.querySelector('.pass');
 var inputApples = document.querySelector('.apples');
 var inputThanks = document.querySelector('.thanks');
 
-//var inputName = document.querySelector('.name');
+
+
+
+
+
+
 
 
 function checkname(inp,opt,message,maxopt){
@@ -133,4 +179,4 @@ checkname(inputPass, 8,16);
 checkname(inputApples, 1,);
 checkname(inputThanks);
 
-    
+    */

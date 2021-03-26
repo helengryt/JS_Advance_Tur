@@ -7,21 +7,21 @@
 </head>
 <body>
 	<form id="formToValidate">
-		<span>Enter your name</span> </br>
-		<input type="text" id="nameEnter" class="name" /> </br></br>
-		<span>Enter your e-mail</span> </br>
-		<input type="email" class="email" validEmail /> </br></br>
-		<span>Enter your password</span> </br>
-		<input type="password" class="pass" /></br></br>
-		<span>Enter the number of apples eaten</span> </br>
-		<input type="number" class="apples" minlength = 1/></br></br>
-		<span>Say thanks for apples</span> </br>
-		<input type="text" class="thanks" value=""/></br></br>
+		<label for="name">Enter your name</label> </br>
+		<input type="text" minlength="2" id="name" /> </br></br>
+		<label for="email">Enter your e-mail</label> </br>
+		<input type="email" minlength="3" id ="email" validEmail /> </br></br>
+		<label for="pass">Enter your password</label> </br>
+		<input type="password" minlength="8" maxlength=16 id ="pass" /></br></br>
+		<label for="apples">Enter the number of apples eaten</label> </br>
+		<input type="number" id ="apples" minlength = 1/></br></br>
+		<label for="sayThanks">Say thanks for apples</label> </br>
+		<input type="text" id="sayThanks" value=""/></br></br>
     	<input type="checkbox" id="agreed" /> <label for = "agreed"> Click if you agree</label>
     	</br></br>
 
-    	<input type="button" class="submit" value="Submit" /> &nbsp;
-    	<input type="button" class="validate" value="Validate" />
+    	<input type="button" id="submit" value="Submit" /> &nbsp;
+    	<input type="button" id="validate" value="Validate" />
 
 
     	<style>
